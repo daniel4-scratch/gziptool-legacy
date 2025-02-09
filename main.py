@@ -1,3 +1,6 @@
+version = "1.0.0"
+url = "https://github.com/Daniel4-Scratch/gziptool"
+
 try:
 
     import gzip
@@ -74,6 +77,9 @@ try:
             create_custom_gzip_archive("archive_"+str(current_time.strftime('%d-%m-%Y-%H-%M-%S')), *sys.argv[1:])
         elif len(sys.argv) == 2 and isFileGz(sys.argv[1]):
             extract_custom_gzip_archive(sys.argv[1], "unarchive_"+str(os.path.basename(sys.argv[1])))
+        elif len(sys.argv) == 2 and sys.argv[1] == 'info':
+            print(version)
+            print(url)
         else:
             print("Invalid arguments")
             print("Archive: python main.py archive <output_file> <input_files> ...")
