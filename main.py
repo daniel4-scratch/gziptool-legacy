@@ -57,6 +57,32 @@ try:
                 with open(output_file_path, 'wb') as f_out:
                     f_out.write(file_content)
 
+    def extract_custom_gzip_archive_to_memory(input_file):
+        """
+        Extracts files from a custom .gz archive into memory.
+
+        :param input_file: Path to the input .gz file.
+        :return: Dictionary with file names as keys and file contents (bytes) as values.
+        """
+        extracted_files = {}
+        with gzip.open(input_file, 'rb') as f_in:
+            while True:
+                # Read file name
+                file_name = f_in.readline().decode('utf-8').strip()
+                if not file_name:
+                    break  # End of archive
+                
+                # Read file size
+                file_size = int(f_in.readline().decode('utf-8').strip())
+                
+                # Read file content
+                file_content = f_in.read(file_size)
+                
+                # Store in dictionary
+                extracted_files[file_name] = file_content
+        return extracted_files
+
+
     def isListFiles(list):
         for file in list:
             if not os.path.isfile(file):
