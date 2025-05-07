@@ -87,4 +87,7 @@ try:
 
 except Exception as e:
     open("error.log", "w").write(str(e))
-    os.system("notepad.exe error.log")
+    if sys.platform == "win32":
+        os.system("notepad.exe error.log")
+    else:
+        print("An error occurred. Check error.log in the cwd for details.")
