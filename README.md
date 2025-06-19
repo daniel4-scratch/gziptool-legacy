@@ -1,16 +1,16 @@
 # gziptool
 A simple tool to archive and unarchive files using the gzip algorithm.
 
-## Usage
-Drag multiple files to create an archive.
-Drag an archive to extract its contents.
-
-### CLI
-**Archive:**
-`gziptool archive <output_file> <input_files>`
-
-**Unarchive:**
-`gziptool unarchive <input_file> <output_dir>`
-
-**Version:**
-`gziptool info`
+# Building
+## Python
+Using pyinstaller:
+```
+pip install pyinstaller
+pyinstaller --noconfirm --onefile --console --name "gziptool" "main.py"
+```
+## Javascript
+Using pkg:
+```
+npm install -g pkg
+pkg index.js --targets node16-linux-x64,node16-macos-x64,node16-win-x64
+```
